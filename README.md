@@ -5,13 +5,13 @@
 - **DESCRIPTION :**
 
   - **Voltorb Flip minigame like in React.**
-  - **Thi project is for learning purposes only.**
+  - **This project is for learning purposes only.**
 
 ---
 
 - **STACK :**
 
-  - **F6X VOLTORB FLIP** : `0.1.0`
+  - **F6X VOLTORB FLIP** : `0.2.0`
   - **React** : `18.3.1`
   - **React Dom** : `18.3.1`
 
@@ -26,3 +26,4 @@
 - **CREDITS :**
 
   - **Author : [FANTAS666X](https://github.com/FANTAS666IXI)**
+  - **Resources : [WikiDex](https://www.wikidex.net/wiki/WikiDex)**
