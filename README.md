@@ -11,7 +11,7 @@
 
 - **STACK :**
 
-  - **F6X VOLTORB FLIP** : `0.3.1`
+  - **F6X VOLTORB FLIP** : `0.3.2`
   - **React** : `18.3.1`
   - **React Dom** : `18.3.1`
 
