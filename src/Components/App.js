@@ -1,4 +1,4 @@
-import ColorsData from "../data/colors.json";
+import ColorsData from "../Data/colors.json";
 import VersionWaterMark from "./VersionWaterMark";
 
 export default function App() {
