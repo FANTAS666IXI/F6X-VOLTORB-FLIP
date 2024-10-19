@@ -11,7 +11,7 @@
 
 - **STACK :**
 
-  - **F6X VOLTORB FLIP** : `0.2.0`
+  - **F6X VOLTORB FLIP** : `0.3.0`
   - **React** : `18.3.1`
   - **React Dom** : `18.3.1`
 
@@ -19,7 +19,7 @@
 
 - **URLS :**
 
-  - **Website : [F6X VOLTORB FLIP](https://github.com/FANTAS666IXI/F6X-VOLTORB-FLIP)**
+  - **Website : [F6X VOLTORB FLIP](https://f6x-voltorb-flip.netlify.app)**
 
 ---
 

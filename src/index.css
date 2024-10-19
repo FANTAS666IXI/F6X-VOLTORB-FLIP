@@ -1,5 +1,6 @@
 :root {
-  --color-background: #14b545;
+  --color-background: #28a269;
+  --color-background-border: #188261;
   --color-title: #000000;
   --color-version-water-mark: rgba(0, 0, 0, 0.5);
 }
@@ -35,18 +36,39 @@ body {
 
 .App {
   height: 100%;
+}
+
+.DivTitle {
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.title {
+.DivBoard {
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Title {
   color: var(--color-title);
 }
 
-.versionWatermark {
+.CardRow,
+.BottomSideCards {
+  margin: 10px 20px;
+}
+
+.SideCard,
+.Card {
+  margin: 0 10px;
+}
+
+.VersionWatermark {
   position: fixed;
-  top: 5px;
+  top: 0;
   right: 15px;
   font-size: 2rem;
   font-weight: bold;
