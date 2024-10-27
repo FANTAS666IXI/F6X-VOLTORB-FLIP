@@ -1,8 +1,8 @@
 :root {
-  --color-background: #28a269;
-  --color-background-border: #188261;
-  --color-title: #000000;
-  --color-version-water-mark: rgba(0, 0, 0, 0.5);
+  --text: #000000;
+  --background: #28a269;
+  --background-border: #188261;
+  --transparent: rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -27,51 +27,95 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-background);
+  background-color: var(--background);
 }
 
 #root {
   height: 100%;
 }
 
-.App {
+.app {
   height: 100%;
 }
 
-.DivTitle {
+.title__container {
   height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.DivBoard {
+.title {
+  color: var(--text);
+}
+
+.board__container {
   height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.Title {
-  color: var(--color-title);
+.board__row,
+.bottom__side__cards {
+  margin: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.CardRow,
-.BottomSideCards {
-  margin: 10px 20px;
+.row__background {
+  position: absolute;
+  top: 32%;
+  left: 10%;
+  width: 80%;
+  height: 45%;
+  z-index: -1;
 }
 
-.SideCard,
-.Card {
+.column__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.column__background {
+  position: absolute;
+  bottom: 50px;
+  width: 30%;
+  height: 500px;
+  z-index: -1;
+}
+
+.side__card,
+.card {
   margin: 0 10px;
 }
 
-.VersionWatermark {
+.side__card p {
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: var(--text);
+}
+
+.side__card__points {
+  top: -2px;
+  right: 25px;
+}
+
+.side__card__voltorbs {
+  bottom: 15px;
+  right: 25px;
+}
+
+.version__watermark {
   position: fixed;
   top: 0;
   right: 15px;
   font-size: 2rem;
   font-weight: bold;
   font-style: italic;
-  color: var(--color-version-water-mark);
+  color: var(--transparent);
 }

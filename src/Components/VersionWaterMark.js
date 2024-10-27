@@ -1,7 +1,7 @@
 export default function VersionWaterMark() {
-    const version = require("../../package.json").version;
+    const version = require("../../package.json").version
 
     return (
-        <p className="VersionWatermark">{version}</p>
-    );
-};
+        <p className="version__watermark">{version}</p>
+    )
+}
