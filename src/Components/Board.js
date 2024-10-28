@@ -1,3 +1,4 @@
+import { useState } from "react"
 import ColorsData from "../Data/colors.json"
 
 export default function Board() {
@@ -26,8 +27,18 @@ export default function Board() {
     }
 
     function Card() {
+        const [isRevealed, setIsRevealed] = useState(false)
+        const cardValue = Math.floor(Math.random() * 4)
+
+        function handleCardClick() {
+            setIsRevealed((prevIsRevealed) => prevIsRevealed || true);
+        }
+
         return (
-            <img className="card" src="items/cards/card.png" alt="Card.png" />
+            <div className="card" onClick={handleCardClick} >
+                <img className="card__img" src="items/cards/card.png" alt="Card.png" />
+                {isRevealed && <p className="card__content">{cardValue}</p>}
+            </div>
         )
     }
 
@@ -57,7 +68,6 @@ export default function Board() {
                         <SideCard key={`CARD-5-${i}`} color={color} />
                     </div>
                 ))}
-                {/* {colors.map((color, i) => (<SideCard key={`CARD-5-${i}`} color={color} />))} */}
             </div>
         )
     }

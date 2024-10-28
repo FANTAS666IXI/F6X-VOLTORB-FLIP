@@ -1,5 +1,6 @@
 :root {
   --text: #000000;
+  --card__content: #ffffff;
   --background: #28a269;
   --background-border: #188261;
   --transparent: rgba(0, 0, 0, 0.5);
@@ -13,6 +14,12 @@
 
 *::-webkit-scrollbar {
   display: none;
+}
+
+div,
+img {
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 html {
@@ -47,6 +54,7 @@ body {
 
 .title {
   color: var(--text);
+  text-align: center;
 }
 
 .board__container {
@@ -88,9 +96,30 @@ body {
   z-index: -1;
 }
 
-.side__card,
-.card {
+.card,
+.side__card {
   margin: 0 10px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__img {
+  width: 100%;
+  height: 100%;
+}
+
+.card__content {
+  position: absolute;
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: var(--card__content);
+  pointer-events: none;
+  padding-bottom: 5px;
+  text-align: center;
 }
 
 .side__card p {
