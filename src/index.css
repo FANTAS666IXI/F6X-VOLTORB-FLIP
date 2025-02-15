@@ -1,9 +1,8 @@
 :root {
-  --text: #000000;
-  --card__content: #ffffff;
   --background: #28a269;
-  --background-border: #188261;
   --transparent: rgba(0, 0, 0, 0.5);
+  --text: #000000;
+  --card-content: #ffffff;
 }
 
 * {
@@ -27,13 +26,13 @@ html {
 }
 
 body {
-  margin: 0;
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--text);
   background-color: var(--background);
 }
 
@@ -45,104 +44,106 @@ body {
   height: 100%;
 }
 
-.title__container {
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .title {
-  color: var(--text);
-  text-align: center;
-}
-
-.board__container {
-  height: 600px;
+  height: 10%;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
 }
 
-.board__row,
-.bottom__side__cards {
-  margin: 20px;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.row__background {
-  position: absolute;
-  top: 32%;
-  left: 10%;
-  width: 80%;
-  height: 45%;
-  z-index: -1;
-}
-
-.column__container {
-  position: relative;
+.board {
+  height: 90%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
 
-.column__background {
-  position: absolute;
-  bottom: 50px;
-  width: 30%;
-  height: 500px;
-  z-index: -1;
-}
-
-.card,
-.side__card {
-  margin: 0 10px;
+.row {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+  align-items: center;
 }
 
 .card {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-.card__img {
+.card,
+.info-card {
+  width: 120px;
+  height: 100px;
+  position: relative;
+}
+
+.card img,
+.info-card img {
   width: 100%;
   height: 100%;
 }
 
-.card__content {
+.card-content,
+.info-card p {
   position: absolute;
-  font-size: 2.4rem;
+}
+
+.card-content {
+  color: var(--card-content);
+  font-size: 3rem;
   font-weight: bold;
-  color: var(--card__content);
-  pointer-events: none;
-  padding-bottom: 5px;
+  padding-bottom: 0.5rem;
   text-align: center;
 }
 
-.side__card p {
-  position: absolute;
+.info-card p {
   font-weight: bold;
   font-size: 1.6rem;
-  color: var(--text);
+  right: 0.8rem;
 }
 
-.side__card__points {
-  top: -2px;
-  right: 25px;
+.info-card .points {
+  top: 0.1rem;
 }
 
-.side__card__voltorbs {
-  bottom: 15px;
-  right: 25px;
+.info-card .voltorbs {
+  top: 3rem;
+}
+
+.row .background {
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  z-index: -1;
+}
+
+.bottom-info-cards {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+}
+
+.bottom-info-cards .background {
+  position: absolute;
+  width: 1.875rem;
+  height: 47rem;
+  top: -41rem;
+  margin-left: 2.813rem;
+  z-index: -2;
+}
+
+.invisible-card {
+  visibility: hidden;
 }
 
 .version__watermark {
   position: fixed;
   top: 0;
-  right: 15px;
+  right: 1rem;
   font-size: 2rem;
   font-weight: bold;
   font-style: italic;
