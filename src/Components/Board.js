@@ -1,11 +1,26 @@
 import { useState } from "react"
 import ColorsData from "../Data/colors.json"
+import GenerateBoard from "../Utils/GenerateBoard.js"
 
 /**
  * @component App.
  * @returns {JSX.Element} - The App component.
  */
 export default function Board() {
+    /**
+     * The Board Configuration.
+     * @type {object}.
+     */
+    const boardConfiguration = [3, 3, 3]
+
+    /**
+     * The Board Values.
+     * @type {[object, function]}.
+     */
+    // TODO: SOLVE THIS
+    // eslint-disable-next-line no-unused-vars
+    const [boardValues, setBoardValues] = useState(GenerateBoard(boardConfiguration))
+
     /**
      * The Colors list.
      * @type {object}.
@@ -14,7 +29,7 @@ export default function Board() {
 
     return (
         <div className="board">
-            {colors.map((color, i) => (<Row key={`ROW-${i}`} row={i} color={color} />))}
+            {colors.map((color, index) => (<Row key={`ROW-${index}`} row={index} color={color} rowValues={boardValues[index]} />))}
             <BottomInfoCards colors={colors} />
         </div>
     )
@@ -23,9 +38,10 @@ export default function Board() {
      * @component Row.
      * @param {number} row - The Index of the row.
      * @param {string} color - The Color of the row.
+     * @param {object} rowValues - The Values of the row.
      * @returns {JSX.Element} - The Row component.
      */
-    function Row({ row, color }) {
+    function Row({ row, color, rowValues }) {
         /**
          * The number of cards by row.
          * @type {number}.
@@ -35,9 +51,9 @@ export default function Board() {
         return (
             <div className="row">
                 {Array.from({ length: rowLength }, (_, index) => (
-                    <Card key={`CARD-${row}-${index}`} />
+                    <Card key={`CARD-${row}-${index}`} cardValue={rowValues[index]} />
                 ))}
-                <InfoCard key={`CARD-${row}-${rowLength}`} color={color} />
+                <InfoCard key={`CARD-${row}-${rowLength}`} values={boardValues[row]} color={color} />
                 <img className="background" src={`/items/lines/horizontal/row_${color}.png`} alt="Row Background" />
             </div>
         )
@@ -45,20 +61,16 @@ export default function Board() {
 
     /**
      * @component Card.
+     * @param {number} cardValue - The Value of the card.
      * @returns {JSX.Element} - The Card component.
      */
-    function Card() {
+    function Card({ cardValue }) {
         /**
          * Check if the card has been revealed.
          * @type {[boolean, function]}.
          */
-        const [isRevealed, setIsRevealed] = useState(Math.floor(Math.random() * 2) === 0)
-
-        /**
-         * The value of the card.
-         * @type {number}.
-         */
-        const cardValue = Math.floor(Math.random() * 4)
+        // TODO: SET TO FALSE
+        const [isRevealed, setIsRevealed] = useState(cardValue === 1 ? false : true)
 
         /**
          * Reveals the card.
@@ -77,21 +89,22 @@ export default function Board() {
 
     /**
      * @component Info Card.
+     * @param {object} values - The Values that must take in count the Info Card.
      * @param {string} color - The Color of the Info Card.
      * @returns {JSX.Element} - The Info Card component.
      */
-    function InfoCard({ color }) {
+    function InfoCard({ values, color }) {
         /**
-         * The number of points in the corresponding row.
+         * The total quantity of points.
          * @type {number}.
          */
-        const points = 5
+        const points = values.reduce((total, currentValue) => total + currentValue, 0)
 
         /**
-         * The number of voltorbs in the corresponding row.
+         * The total quantity of voltorbs (0).
          * @type {number}.
          */
-        const voltorbs = 0
+        const voltorbs = values.filter(value => value === 0).length
 
         return (
             <div className="info-card">
@@ -125,9 +138,15 @@ export default function Board() {
      * @returns {JSX.Element} - The Column component.
      */
     function Column({ index, color }) {
+        /**
+         * The Values that must be passed to the Info Card.
+         * @type {number}.
+         */
+        const values = boardValues.map(row => row[index])
+
         return (
             <div className="column">
-                <InfoCard key={`CARD-5-${index}`} color={color} />
+                <InfoCard key={`CARD-5-${index}`} values={values} color={color} />
                 <img
                     className="background"
                     src={`/items/lines/vertical/column_${color}.png`}
@@ -143,7 +162,7 @@ export default function Board() {
      */
     function InvisibleCard() {
         return (
-            <div className="info-card invisible-card">
+            <div className="invisible-card">
                 <img src="items/cards/info_cards/info_card_red.png" alt="Invisible Info Card" />
             </div>
         )
