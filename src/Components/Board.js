@@ -1,8 +1,16 @@
 import { useState } from "react"
 import ColorsData from "../Data/colors.json"
 
+/**
+ * @component App.
+ * @returns {JSX.Element} - The App component.
+ */
 export default function Board() {
-    const colors = ColorsData.colors
+    /**
+     * The Colors list.
+     * @type {object}.
+     */
+    const colors = ColorsData
 
     return (
         <div className="board">
@@ -11,8 +19,19 @@ export default function Board() {
         </div>
     )
 
+    /**
+     * @component Row.
+     * @param {number} row - The Index of the row.
+     * @param {string} color - The Color of the row.
+     * @returns {JSX.Element} - The Row component.
+     */
     function Row({ row, color }) {
+        /**
+         * The number of cards by row.
+         * @type {number}.
+         */
         const rowLength = 5
+
         return (
             <div className="row">
                 {Array.from({ length: rowLength }, (_, index) => (
@@ -24,12 +43,28 @@ export default function Board() {
         )
     }
 
+    /**
+     * @component Card.
+     * @returns {JSX.Element} - The Card component.
+     */
     function Card() {
-        const [isRevealed, setIsRevealed] = useState(false)
+        /**
+         * Check if the card has been revealed.
+         * @type {[boolean, function]}.
+         */
+        const [isRevealed, setIsRevealed] = useState(Math.floor(Math.random() * 2) === 0)
+
+        /**
+         * The value of the card.
+         * @type {number}.
+         */
         const cardValue = Math.floor(Math.random() * 4)
 
+        /**
+         * Reveals the card.
+         */
         function revealCard() {
-            setIsRevealed(true);
+            setIsRevealed(true)
         }
 
         return (
@@ -40,8 +75,22 @@ export default function Board() {
         )
     }
 
+    /**
+     * @component Info Card.
+     * @param {string} color - The Color of the Info Card.
+     * @returns {JSX.Element} - The Info Card component.
+     */
     function InfoCard({ color }) {
+        /**
+         * The number of points in the corresponding row.
+         * @type {number}.
+         */
         const points = 5
+
+        /**
+         * The number of voltorbs in the corresponding row.
+         * @type {number}.
+         */
         const voltorbs = 0
 
         return (
@@ -53,6 +102,11 @@ export default function Board() {
         )
     }
 
+    /**
+     * @component Bottom Info Cards.
+     * @param {object} colors - The Colors list.
+     * @returns {JSX.Element} - The Bottom Info Cards component.
+     */
     function BottomInfoCards({ colors }) {
         return (
             <div className="bottom-info-cards">
@@ -64,6 +118,12 @@ export default function Board() {
         )
     }
 
+    /**
+     * @component Column.
+     * @param {number} index - The index of the column.
+     * @param {string} color - The color of the column.
+     * @returns {JSX.Element} - The Column component.
+     */
     function Column({ index, color }) {
         return (
             <div className="column">
@@ -77,6 +137,10 @@ export default function Board() {
         )
     }
 
+    /**
+     * @component Invisible Card.
+     * @returns {JSX.Element} - The Invisible Card component.
+     */
     function InvisibleCard() {
         return (
             <div className="info-card invisible-card">
