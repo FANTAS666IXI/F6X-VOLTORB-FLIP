@@ -1,5 +1,5 @@
 import Title from "./Title"
-import Board from "./Board"
+import MainSection from "./MainSection"
 import VersionWaterMark from "./VersionWaterMark"
 
 /**
@@ -10,7 +10,7 @@ export default function App() {
   return (
     <div className="app">
       <Title />
-      <Board />
+      <MainSection />
       <VersionWaterMark />
     </div>
   )
