@@ -1,6 +1,7 @@
 import { useState } from "react"
 import ColorsData from "../Data/colors.json"
 import GenerateBoard from "../Utils/GenerateBoard.js"
+import BoardConfigurations from "../Data/boardConfigurations.json"
 
 /**
  * @component App.
@@ -8,24 +9,36 @@ import GenerateBoard from "../Utils/GenerateBoard.js"
  */
 export default function Board() {
     /**
+     * The Current Level.
+     * @type {number}.
+     */
+    const level = 3
+
+    /**
      * The Board Configuration.
      * @type {object}.
      */
-    const boardConfiguration = [3, 3, 3]
+    const boardConfiguration = BoardConfigurations[CalculateBoardConfiguration()]
 
     /**
      * The Board Values.
-     * @type {[object, function]}.
+     * @type {object}.
      */
-    // TODO: SOLVE THIS
-    // eslint-disable-next-line no-unused-vars
-    const [boardValues, setBoardValues] = useState(GenerateBoard(boardConfiguration))
+    const boardValues = GenerateBoard(boardConfiguration)
 
     /**
      * The Colors list.
      * @type {object}.
      */
     const colors = ColorsData
+
+    /**
+     * Selects a random Board Configuration corresponding to the Level.
+     * @type {object}.
+     */
+    function CalculateBoardConfiguration() {
+        return ((level - 1) * 10 + Math.floor(Math.random() * 10))
+    }
 
     return (
         <div className="board">
@@ -82,8 +95,16 @@ export default function Board() {
         return (
             <div className="card" >
                 <img src="items/cards/card.png" alt="Card" onClick={revealCard} />
-                {isRevealed && <p className="card-content">{cardValue}</p>}
+                {isRevealed && <CardContent cardValue={cardValue} />}
             </div>
+        )
+    }
+
+    function CardContent({ cardValue }) {
+        return cardValue === 0 ? (
+            <img className="card-content voltorb" src="items/cards/voltorb.png" alt="Voltorb" />
+        ) : (
+            <p className="card-content">{cardValue}</p>
         )
     }
 
@@ -126,7 +147,7 @@ export default function Board() {
                 {colors.map((color, i) => (
                     <Column key={`COLUMN-${i}`} index={i} color={color} />
                 ))}
-                <InvisibleCard key={"CARD-5-5"} />
+                <InvisibleCard key="CARD-5-5" />
             </div>
         )
     }

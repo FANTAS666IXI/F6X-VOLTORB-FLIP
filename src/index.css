@@ -72,6 +72,11 @@ body {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.card:hover {
+  scale: 1.1;
 }
 
 .card,
@@ -100,6 +105,10 @@ body {
   font-weight: bold;
   padding-bottom: 0.5rem;
   text-align: center;
+}
+
+.voltorb {
+  scale: 0.6;
 }
 
 .info-card p {
